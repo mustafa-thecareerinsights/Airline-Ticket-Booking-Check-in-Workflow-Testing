@@ -1,0 +1,21 @@
+TestCaseID,Module,Scenario,TestData,ExpectedResult,ActualResult,Status,Severity,DefectID
+ATB-001,Flight Search,Valid one-way search,"HYD->DEL, 2026-10-15",Matching flights displayed,Matching flights displayed,PASS,,
+ATB-002,Flight Search,Blank origin,Origin blank,Validation message,Validation message displayed,PASS,,
+ATB-003,Flight Search,Same origin and destination,HYD->HYD,Search blocked,Search blocked,PASS,,
+ATB-004,Date Validation,Past travel date,2026-09-01,Date rejected,Past date accepted,FAIL,High,ATB-DEF-001
+ATB-005,Passenger Details,Valid adult details,"Name, DOB, gender",Details accepted,Details accepted,PASS,,
+ATB-006,Passenger Details,Blank passenger name,Blank,Validation error,Validation error shown,PASS,,
+ATB-007,Passenger Details,Invalid email,user@,Validation error,Validation error shown,PASS,,
+ATB-008,Seat Selection,Select available seat,12A,Seat reserved,Seat reserved,PASS,,
+ATB-009,Seat Selection,Select occupied seat,10B,Selection blocked,Selection blocked,PASS,,
+ATB-010,Seat Selection,Rapid double seat selection,12A then 12B quickly,Only last valid seat retained,Both seats temporarily reserved,FAIL,Medium,ATB-DEF-002
+ATB-011,Baggage,Add valid baggage option,15 kg,Baggage added,Baggage added,PASS,,
+ATB-012,Baggage,Exceed baggage limit,60 kg,Validation/fee rule displayed,Rule displayed,PASS,,
+ATB-013,Booking,Confirm valid booking,1 adult,Booking reference generated,Booking reference generated,PASS,,
+ATB-014,Booking,Confirm without passenger details,Missing details,Booking blocked,Booking blocked,PASS,,
+ATB-015,Booking,Verify fare total,Base+tax+baggage,Correct total,Correct total shown,PASS,,
+ATB-016,Check-in,Check in within allowed window,Valid booking,Check-in succeeds,Check-in succeeds,PASS,,
+ATB-017,Check-in,Check in before window,Too early,Check-in blocked,Check-in blocked,PASS,,
+ATB-018,Check-in,Check in cancelled booking,Cancelled booking,Check-in blocked,Check-in blocked,PASS,,
+ATB-019,Check-in,Generate boarding pass,Checked-in booking,Boarding pass generated,Boarding pass generated,PASS,,
+ATB-020,Error Handling,Retry booking after timeout,Simulated timeout,Single booking only,Duplicate booking reference generated,FAIL,Critical,ATB-DEF-003
